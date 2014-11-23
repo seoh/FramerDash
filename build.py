@@ -22,11 +22,11 @@ for tag in soup.find_all('a', {'href':any}):
 
     try:
     	c = tag['class']
-    except Exception, e:
+    except Exception as e:
     	continue
 
     if c[0] != "sub-section":
-    	print c
+    	print(c)
     	continue
     
     if len(name) > 0:
@@ -39,7 +39,7 @@ for tag in soup.find_all('a', {'href':any}):
         path = "framerjs.com/docs/" + path
 
         cur.execute("INSERT OR IGNORE INTO searchIndex(name, type, path) VALUES (?,?,?)", (name, 'func', path))
-        print 'name: %s, path: %s' % (name, path)
+        print('name: %s, path: %s' % (name, path))
 
 db.commit()
 db.close()
